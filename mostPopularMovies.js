@@ -20,4 +20,4 @@ async function getMostPopularMovies() {
   return moviesDetails;
 }
 
-getMostPopularMovies();
+export default getMostPopularMovies
