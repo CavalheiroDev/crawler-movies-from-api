@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-require('../Models/Movie');
-const Movie = mongoose.model('movies');
+require('../Models/Topicks');
+const Movie = mongoose.model('topicks');
 
-function registerMoviesTopick(rank, name, imageUrl) {
+function registerMoviesTopick(rank, name, urlPage) {
 
   const newMovie = {
     rank: rank,
     name: name,
-    image: imageUrl,
+    pageDetails: urlPage,
     topick: true
   };
 

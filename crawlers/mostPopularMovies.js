@@ -10,13 +10,12 @@ async function getMostPopularMovies() {
     titles: $('.titleColumn > a').map(function () {
       return $(this).text();
     }).get(),
-    images: $('.posterColumn').map(function () {
-      return $(this).find('img').attr('src');
+    pageDetails: $('.titleColumn').map(function () {
+      let link = `https://www.imdb.com${$(this).find('a').attr('href')}`
+      return link;
     }).get()
   }
-  // for (let index = 0; index < moviesDetails.titles.length; index++) {
-  //   console.log(moviesDetails.titles[index], moviesDetails.images[index]);
-  // }
+
   return moviesDetails;
 }
 

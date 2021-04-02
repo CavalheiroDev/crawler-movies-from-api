@@ -2,25 +2,22 @@ const getMostPopularMovies = require('./crawlers/mostPopularMovies');
 const { registerMoviesTopick } = require('./Controllers/MoviesController');
 const mongoose = require('mongoose');
 
-async function teste() {
-  const moviesTopicks = await getMostPopularMovies();
-
+getMostPopularMovies().then((moviesTopicks) => {
   mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://localhost/moviesTopicks', {
+  mongoose.connect('mongodb://localhost/movies', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
   })
-    .then(() => console.log('Conectado, meu querido!'))
+    .then(() => {
+      console.log('Conectado, meu querido!')
+      for (let index = 0; index < moviesTopicks.titles.length; index++) {
+        let rank = index + 1;
+        registerMoviesTopick(rank, moviesTopicks.titles[index], moviesTopicks.pageDetails[index]);
+      }
+      return;
+    })
     .catch((error) => console.log('Calma lá né querido!', error));
+});
 
-  for (let index = 0; index < moviesTopicks.titles.length; index++) {
-    let rank = index + 1;
-    registerMoviesTopick(rank, moviesTopicks.titles[index], moviesTopicks.images[index]);
-  }
-
-  return;
-};
-
-teste();
