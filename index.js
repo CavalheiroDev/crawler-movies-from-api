@@ -16,7 +16,8 @@ async function teste() {
     .catch((error) => console.log('Calma lá né querido!', error));
 
   for (let index = 0; index < moviesTopicks.titles.length; index++) {
-    registerMoviesTopick(moviesTopicks.titles[index], moviesTopicks.images[index]);
+    let rank = index + 1;
+    registerMoviesTopick(rank, moviesTopicks.titles[index], moviesTopicks.images[index]);
   }
 
   return;

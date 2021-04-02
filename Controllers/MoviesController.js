@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 require('../Models/Movie');
 const Movie = mongoose.model('movies');
 
-function registerMoviesTopick(name, imageUrl) {
+function registerMoviesTopick(rank, name, imageUrl) {
 
   const newMovie = {
+    rank: rank,
     name: name,
     image: imageUrl,
     topick: true
