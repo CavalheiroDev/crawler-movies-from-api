@@ -16,4 +16,6 @@ function registerMoviesTopick(name, imageUrl) {
 
 };
 
-module.exports = registerMoviesTopick;
+module.exports = {
+  registerMoviesTopick
+};
