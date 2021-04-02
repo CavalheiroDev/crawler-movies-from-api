@@ -1,5 +1,5 @@
-import fetchHTML from './fetchHTML.js';
-import cheerio from 'cheerio';
+const fetchHTML = require('./fetchHTML');
+const cheerio = require('cheerio');
 
 async function getMostPopularMovies() {
   const html = await fetchHTML('https://www.imdb.com/chart/moviemeter');
@@ -20,4 +20,4 @@ async function getMostPopularMovies() {
   return moviesDetails;
 }
 
-export default getMostPopularMovies
+module.exports = getMostPopularMovies;
